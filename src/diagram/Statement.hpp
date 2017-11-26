@@ -9,6 +9,7 @@
 #define SRC_STATEMENT_H_
 
 #include <string>
+#include <memory>
 
 namespace samb {
 
@@ -24,24 +25,23 @@ namespace samb {
  * PARALLEL,
  */
 
-/* this class should behave like a std::list,  or a std::map storing the data
- * with a tree structure, BUT it is not a tree because allows 2 notes to point
+/* this struct is a link for linked list that stores the data in a tree-like
+ * structure, BUT it is not a tree because it allows 2 or more nodes to point
  * at a single node
  *
- * Normal Tree:          Statements:
+ * Tree:                 Statements:
  * A - B - C - D         A - B - C - D - G
  *     \                     \      /
  *      E - F                 E - F
  *
- * Because a statement contains branching elmeents. (if / switch)
+ * Because a statements can be branching elements. (if / switch)
+ *
+ * This class is also a *Factory* to make statements.
  */
-class Statement {
-private:
-	Statement *next;
-	Statement *prev;
+struct Statement {
+	using pointer = std::shared_ptr<Statement>;
 
-public:
-	const enum Type {
+	enum Type {
 		PROCESS,
 		DECISION,
 		SWITCH,
@@ -49,10 +49,30 @@ public:
 		UNTIL,
 		SCOPE,
 		PARALLEL,
-	} m_type;
 
-	Statement(Type type, Statement *prev): m_type(type), m_prev(prev);
+		/* this type of statement indicates the end of the program
+		 * and it is used only internally
+		 *
+		 * TODO: think of something more elegant to solve this
+		 */
+		END
+	} type;
+
+	std::string text;
+
+	pointer next;
+	pointer scope; // TODO: make iterator look for this
+
+	static Statement::pointer makeStatement(Type t);
+//	static Statement::pointer makeProcess();
+//	static Statement::pointer makeLoop(Type t, std::string condition);
+//	static Statement::pointer makeBranching(Type t, std::string condition);
+
 	virtual ~Statement();
+	bool operator==(const Statement& other);
+
+private:
+	Statement(Type type, std::string txt, pointer next, pointer scope);
 };
 
 } /* namespace samb */

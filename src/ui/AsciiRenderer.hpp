@@ -5,13 +5,17 @@
  *      Author: naopross
  */
 
-#ifndef SRC_UI_ASCIIRENDERER_H_
-#define SRC_UI_ASCIIRENDERER_H_
+#ifndef SRC_UI_ASCIIRENDERER_HPP_
+#define SRC_UI_ASCIIRENDERER_HPP_
 
-#include "../diagram/Structogram.h"
+#include "../diagram/Structogram.hpp"
 
 namespace samb {
 
+/* Sample renderer for debug,
+ *
+ * TODO: implement PdfRenderer, UiRenderer with a common interface
+ */
 class AsciiRenderer {
 private:
 	Structogram m_structogram;
@@ -30,4 +34,4 @@ public:
 
 } /* namespace samb */
 
-#endif /* SRC_UI_ASCIIRENDERER_H_ */
+#endif /* SRC_UI_ASCIIRENDERER_HPP_ */

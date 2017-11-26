@@ -5,7 +5,7 @@
  *      Author: naopross
  */
 
-#include "AsciiRenderer.h"
+#include "AsciiRenderer.hpp"
 
 #include <memory>
 
@@ -38,10 +38,9 @@ void AsciiRenderer::drawText(std::string text, unsigned int width, std::string b
 
 	unsigned int textWidth = width - before.length() - after.length();
 
-
 	std::cout << before;
-	for (unsigned int i = 0; i < text.length(); i++) {
-		if (i % textWidth == 0) {
+	for (std::size_t i = 0; i < text.length(); i++) {
+		if (i % textWidth == 0 && i != 0) {
 			std::cout << after <<  "\n" << before;
 		}
 
@@ -62,24 +61,24 @@ void AsciiRenderer::drawDecision(std::string condition, std::string trueText, st
 }
 
 void AsciiRenderer::render() {
-	const std::list<Statement>& statements = m_structogram.getStatements();
 
-	for (std::list<Statement>::const_iterator it = statements.begin(); it != statements.end(); it++) {
-		Statement st = *it;
-		switch (st.type) {
+	for (Structogram::iterator it = m_structogram.begin(); it != m_structogram.end(); ++it) {
+
+		switch (it->type) {
 		case Statement::Type::PROCESS:
 			drawLine();
-			drawText(st.text);
+			drawText(it->text);
+			drawLine();
 			break;
 
 		case Statement::Type::DECISION:
-			drawLine();
 			break;
 
 		case Statement::Type::SWITCH:
 			break;
 
 		case Statement::Type::SCOPE:
+			std::cout << "Title: " << it->text << std::endl;
 			break;
 
 		case Statement::Type::WHILE:
@@ -89,6 +88,10 @@ void AsciiRenderer::render() {
 			break;
 
 		case Statement::Type::PARALLEL:
+			break;
+
+		case Statement::END:
+			// do nothing
 			break;
 		}
 	}
