@@ -5,8 +5,8 @@
  *      Author: naopross
  */
 
-#ifndef SRC_STATEMENT_H_
-#define SRC_STATEMENT_H_
+#ifndef SRC_DIAGRAM_STATEMENT_H_
+#define SRC_DIAGRAM_STATEMENT_H_
 
 #include <string>
 #include <memory>
@@ -61,12 +61,9 @@ struct Statement {
 	std::string text;
 
 	pointer next;
-	pointer scope; // TODO: make iterator look for this
+	pointer scope; // TODO: make iterator aware of scope
 
 	static Statement::pointer makeStatement(Type t);
-//	static Statement::pointer makeProcess();
-//	static Statement::pointer makeLoop(Type t, std::string condition);
-//	static Statement::pointer makeBranching(Type t, std::string condition);
 
 	virtual ~Statement();
 	bool operator==(const Statement& other);
@@ -77,4 +74,4 @@ private:
 
 } /* namespace samb */
 
-#endif /* SRC_STATEMENT_H_ */
+#endif /* SRC_DIAGRAM_STATEMENT_H_ */

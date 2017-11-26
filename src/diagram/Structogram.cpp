@@ -89,16 +89,14 @@ Structogram::iterator Structogram::insert_after(Structogram::iterator it, Statem
 		throw std::invalid_argument("structogram: attempt to insert a null statement");
 	}
 
+	// TODO: update m_tail
+
 	statement->next = it->next;
 	it->next = statement;
 	m_size++;
 
 	return ++it;
 }
-
-//Structogram::iterator Structogram::insert_after(Structogram::iterator it, Statement::pointer statement) {
-//	return insert(++it, statement);
-//}
 
 Structogram::iterator Structogram::erase_after(iterator it) {
 

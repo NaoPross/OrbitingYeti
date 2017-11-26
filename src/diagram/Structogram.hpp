@@ -5,8 +5,8 @@
  *      Author: naopross
  */
 
-#ifndef STRUCTOGRAM_H_
-#define STRUCTOGRAM_H_
+#ifndef SRC_DIAGRAM_STRUCTOGRAM_H_
+#define SRC_DIAGRAM_STRUCTOGRAM_H_
 
 #include <iostream>
 #include <list>
@@ -68,4 +68,4 @@ private:
 
 } /* namespace structograms */
 
-#endif /* STRUCTOGRAM_H_ */
+#endif /* SRC_DIAGRAM_STRUCTOGRAM_H_ */
