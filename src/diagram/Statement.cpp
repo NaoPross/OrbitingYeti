@@ -9,17 +9,14 @@
 
 namespace samb {
 
-Statement::pointer Statement::makeStatement(Statement::Type t) {
-	return std::make_shared<Statement>(Statement(t, "", nullptr, nullptr));
-}
+/* Statement */
+Statement::Statement(Type t, const std::string& text, Statement::pointer p): type(t), m_text(text), m_next(p) {}
 
-bool Statement::operator==(const Statement& other) {
-	return (this->type == other.type) && (this->text == other.text) &&
-			(this->next == other.next) && (this->scope == other.scope);
-}
-
-
-Statement::Statement(Type t, std::string txt, Statement::pointer p, Statement::pointer s): type(t), text(txt), next(p), scope(s) {}
 Statement::~Statement() {}
+
+bool Statement::operator==(const Statement& other) const {
+	// comparison by pointers
+	return (this == &other);
+}
 
 } /* namespace samb */

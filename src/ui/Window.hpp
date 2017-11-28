@@ -9,17 +9,18 @@
 #define SRC_UI_WINDOW_HPP_
 
 #include <QWidget>
+#include <QPushButton>
 
 namespace samb {
 
 class Window : public QWidget {
 Q_OBJECT
 public:
-	Window();
-	virtual ~Window();
+	explicit Window(QWidget *parent = 0);
+	~Window();
 
-signals:
-public slots:
+private:
+	QPushButton *m_quitBtn;
 };
 
 } /* namespace samb */

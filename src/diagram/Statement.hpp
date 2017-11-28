@@ -10,35 +10,28 @@
 
 #include <string>
 #include <memory>
+#include <vector>
+#include <map>
 
 namespace samb {
 
-
 /*  Possible types of statement, according to the NS diagram paper
  * 
- * PROCESS,
- * DECISION,
- * SWITCH,
- * WHILE,
- * UNTIL,
- * SCOPE,
- * PARALLEL,
+ * PROCESS  : a statement that does something
+ * DECISION : splits the program in 2 branches based on a condition
+ * SWITCH   : splits the program in n branches depending on a value
+ * WHILE    : repeat first loop
+ * UNTIL    : repeat last loop
+ * SCOPE    : simple scope to isolate variables
+ * PARALLEL : parallel operations
  */
 
-/* this struct is a link for linked list that stores the data in a tree-like
- * structure, BUT it is not a tree because it allows 2 or more nodes to point
- * at a single node
- *
- * Tree:                 Statements:
- * A - B - C - D         A - B - C - D - G
- *     \                     \      /
- *      E - F                 E - F
- *
- * Because a statements can be branching elements. (if / switch)
- *
- * This class is also a *Factory* to make statements.
+/* This struct is a statement (link) of the iterable object Scope
+ * (linked list), that is also a common interface for the various types of
+ * statements.
  */
-struct Statement {
+class Statement {
+public:
 	using pointer = std::shared_ptr<Statement>;
 
 	enum Type {
@@ -56,20 +49,25 @@ struct Statement {
 		 * TODO: think of something more elegant to solve this
 		 */
 		END
-	} type;
+	};
 
-	std::string text;
+	const Type type;
 
-	pointer next;
-	pointer scope; // TODO: make iterator aware of scope
-
-	static Statement::pointer makeStatement(Type t);
-
+	Statement(Type type, const std::string& text, pointer next);
 	virtual ~Statement();
-	bool operator==(const Statement& other);
+
+	bool operator==(const Statement& other) const;
+
+	/* accessors */
+	void next(pointer next) { m_next = next; }
+	pointer next() const { return m_next; }
+
+	void text(const std::string& text) { m_text = text; }
+	const std::string& text() const { return m_text; }
 
 private:
-	Statement(Type type, std::string txt, pointer next, pointer scope);
+	std::string m_text;
+	pointer m_next;
 };
 
 } /* namespace samb */
