@@ -10,17 +10,20 @@
 
 #include "Statement.hpp"
 
+#include <map>
+
 namespace samb {
 
 class BranchStatement: public Statement {
 public:
 	BranchStatement(Type t, const std::string& condition, pointer next);
 
-	const std::string& condition() const { return text(); }
-	void condition(const std::string& condition) { return text(condition); }
+	/* accessors */
+	const std::map<std::string, pointer>& branches() const { return m_branches; }
+	std::size_t branchesCount() const { return m_branchesCount; }
 
-	std::vector<std::string> branches();
-	std::size_t branchesCount();
+	inline const std::string& condition() const { return text(); }
+	inline void condition(const std::string& condition) { return text(condition); }
 
 private:
 	std::map<std::string, pointer> m_branches;

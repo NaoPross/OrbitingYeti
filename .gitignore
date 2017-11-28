@@ -1,3 +1,9 @@
 Debug
 Release
 
+# editors
+
+**/*.sublime-workspace
+**/*.sublime-project
+
+**/*.swp

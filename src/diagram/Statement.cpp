@@ -10,6 +10,8 @@
 namespace samb {
 
 /* Statement */
+
+Statement::Statement(Type t, const std::string& text): type(t), m_text(text), m_next(nullptr) {}
 Statement::Statement(Type t, const std::string& text, Statement::pointer p): type(t), m_text(text), m_next(p) {}
 
 Statement::~Statement() {}

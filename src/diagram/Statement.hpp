@@ -10,19 +10,17 @@
 
 #include <string>
 #include <memory>
-#include <vector>
-#include <map>
 
 namespace samb {
 
 /*  Possible types of statement, according to the NS diagram paper
  * 
  * PROCESS  : a statement that does something
+ * SCOPE    : simple scope to isolate variables
  * DECISION : splits the program in 2 branches based on a condition
  * SWITCH   : splits the program in n branches depending on a value
  * WHILE    : repeat first loop
  * UNTIL    : repeat last loop
- * SCOPE    : simple scope to isolate variables
  * PARALLEL : parallel operations
  */
 
@@ -36,24 +34,18 @@ public:
 
 	enum Type {
 		PROCESS,
+		SCOPE,
 		DECISION,
 		SWITCH,
 		WHILE,
 		UNTIL,
-		SCOPE,
 		PARALLEL,
-
-		/* this type of statement indicates the end of the program
-		 * and it is used only internally
-		 *
-		 * TODO: think of something more elegant to solve this
-		 */
-		END
 	};
 
 	const Type type;
 
-	Statement(Type type, const std::string& text, pointer next);
+	Statement(Type t, const std::string& text);
+	Statement(Type t, const std::string& text, pointer next);
 	virtual ~Statement();
 
 	bool operator==(const Statement& other) const;
