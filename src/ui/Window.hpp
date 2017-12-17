@@ -16,11 +16,11 @@ namespace samb {
 class Window : public QWidget {
 Q_OBJECT
 public:
-	explicit Window(QWidget *parent = 0);
-	~Window();
+    explicit Window(QWidget *parent = 0);
+    ~Window();
 
 private:
-	QPushButton *m_quitBtn;
+    QPushButton *m_quitBtn;
 };
 
 } /* namespace samb */

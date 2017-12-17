@@ -11,7 +11,7 @@
 #include "Scope.hpp"
 
 namespace samb {
-	typedef Scope Structogram;
+    typedef Scope Structogram;
 }
 
 #endif /* SRC_DIAGRAM_STRUCTOGRAM_HPP_ */

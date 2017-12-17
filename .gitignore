@@ -1,9 +1,44 @@
+#######################################################################
+# EDITORS / IDEs
+#######################################################################
+# vim
+**/*.swp
+
+# Eclipse
 Debug
 Release
+.cproject
+.project
+.settings
 
-# editors
+# VS
+**.sln
+**.vcxproj
+**.filters
+**.vs/
+**.vcxproj.user
 
-**/*.sublime-workspace
-**/*.sublime-project
+# sublime text
+*.sublime-workspace
+*.sublime-project
 
-**/*.swp
+#######################################################################
+# BUILD SYSTEM
+#######################################################################
+# binary
+OrbitingYeti
+OrbitingYeti.exe
+
+build
+
+# cmake
+**/makefile
+**/Makefile
+**/CMakeFiles
+**/CmakeScripts
+**/CMakeCache.txt
+**/Testing
+**/install_manifest.txt
+**/cmake_install.cmake
+**/compile_commands.json
+**/CTestTestfile.cmake

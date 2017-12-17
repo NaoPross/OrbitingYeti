@@ -19,8 +19,8 @@ namespace samb {
  * SCOPE    : simple scope to isolate variables
  * DECISION : splits the program in 2 branches based on a condition
  * SWITCH   : splits the program in n branches depending on a value
- * WHILE    : repeat first loop
- * UNTIL    : repeat last loop
+ * WHILE    : check first loop
+ * UNTIL    : check last loop
  * PARALLEL : parallel operations
  */
 
@@ -30,36 +30,36 @@ namespace samb {
  */
 class Statement {
 public:
-	using pointer = std::shared_ptr<Statement>;
+    using pointer = std::shared_ptr<Statement>;
 
-	enum Type {
-		PROCESS,
-		SCOPE,
-		DECISION,
-		SWITCH,
-		WHILE,
-		UNTIL,
-		PARALLEL,
-	};
+    enum Type {
+        PROCESS,
+        SCOPE,
+        DECISION,
+        SWITCH,
+        WHILE,
+        UNTIL,
+        PARALLEL,
+    };
 
-	const Type type;
+    const Type type;
 
-	Statement(Type t, const std::string& text);
-	Statement(Type t, const std::string& text, pointer next);
-	virtual ~Statement();
+    Statement(Type t, const std::string& text);
+    Statement(Type t, const std::string& text, pointer next);
+    virtual ~Statement();
 
-	bool operator==(const Statement& other) const;
+    bool operator==(const Statement& other) const;
 
-	/* accessors */
-	void next(pointer next) { m_next = next; }
-	pointer next() const { return m_next; }
+    /* accessors */
+    void next(pointer next) { m_next = next; }
+    pointer next() const { return m_next; }
 
-	void text(const std::string& text) { m_text = text; }
-	const std::string& text() const { return m_text; }
+    void text(const std::string& text) { m_text = text; }
+    const std::string& text() const { return m_text; }
 
 private:
-	std::string m_text;
-	pointer m_next;
+    std::string m_text;
+    pointer m_next;
 };
 
 } /* namespace samb */

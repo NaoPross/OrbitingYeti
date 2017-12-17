@@ -12,24 +12,22 @@
 #include <QApplication>
 
 
-namespace samb {
+using namespace samb;
 
 Window::Window(QWidget *parent): QWidget(parent) {
-	setWindowTitle("OrbitingYeti");
+    setWindowTitle("OrbitingYeti");
 
-	QVBoxLayout *vBox = new QVBoxLayout(this);
-	QHBoxLayout *hBox = new QHBoxLayout();
+    QVBoxLayout *vBox = new QVBoxLayout(this);
+    QHBoxLayout *hBox = new QHBoxLayout();
 
-	m_quitBtn = new QPushButton("Quit", this);
-	connect(m_quitBtn, SIGNAL(clicked()), qApp, SLOT(quit()));
+    m_quitBtn = new QPushButton("Quit", this);
+    connect(m_quitBtn, SIGNAL(clicked()), qApp, SLOT(quit()));
 
-	hBox->addWidget(m_quitBtn, 0, Qt::AlignRight);
-	vBox->addStretch(1);
-	vBox->addLayout(hBox);
+    hBox->addWidget(m_quitBtn, 0, Qt::AlignRight);
+    vBox->addStretch(1);
+    vBox->addLayout(hBox);
 }
 
 Window::~Window() {
 
 }
-
-} /* namespace samb */

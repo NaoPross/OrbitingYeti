@@ -1,16 +1,24 @@
 #include "diagram/Structogram.hpp"
+#include "ui/Window.hpp"
 
 #include <iostream>
 #include <memory>
+
+#include <QApplication>
 
 
 using namespace samb;
 
 int main(int argc, char *argv[]) {
 
-	Structogram st("Example");
+    QApplication app(argc, argv);
 
-	return 0;
+    Window window;
+    window.show(); 
+
+    Structogram st("Example");
+
+    return app.exec();
 }
 
 

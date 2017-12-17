@@ -19,39 +19,39 @@ namespace samb {
  */
 class Scope : public Statement {
 public:
-	class iterator {
-	public:
-		iterator(pointer statement);
-		~iterator();
+    class iterator {
+    public:
+        explicit iterator(pointer statement);
+        ~iterator();
 
-		iterator& operator++();
-		iterator& operator++(int);
+        iterator& operator++();
+        iterator& operator++(int);
 
-		Statement& operator*() const;
-		Statement::pointer operator->() const;
+        Statement& operator*() const;
+        Statement::pointer operator->() const;
 
-	private:
-		Statement::pointer m_current;
-	};
+    private:
+        Statement::pointer m_current;
+    };
 
-	Scope(std::string label);
-	Scope(std::string label, Statement::pointer first);
-	~Scope();
+    explicit Scope(std::string label);
+    Scope(std::string label, Statement::pointer first);
+    ~Scope();
 
-	iterator insert_after(iterator it, Statement::pointer statement);
-	iterator erase_after(iterator it);
+    iterator insert_after(iterator it, Statement::pointer statement);
+    iterator erase_after(iterator it);
 
-	/* accessors */
-	std::size_t size() const { return m_size; }
+    /* accessors */
+    std::size_t size() const { return m_size; }
 
-	/* iterator */
-	iterator begin() { return iterator(m_head); }
-	iterator end() { return iterator(m_tail); }
+    /* iterator */
+    iterator begin() { return iterator(m_head); }
+    iterator end() { return iterator(m_tail); }
 
 private:
-	Statement::pointer m_head;
-	Statement::pointer m_tail;
-	std::size_t m_size = 0;
+    Statement::pointer m_head;
+    Statement::pointer m_tail;
+    std::size_t m_size = 0;
 };
 
 } /* namespace samb */

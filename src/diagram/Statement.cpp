@@ -7,7 +7,7 @@
 
 #include "Statement.hpp"
 
-namespace samb {
+using namespace samb;
 
 /* Statement */
 
@@ -17,8 +17,7 @@ Statement::Statement(Type t, const std::string& text, Statement::pointer p): typ
 Statement::~Statement() {}
 
 bool Statement::operator==(const Statement& other) const {
-	// comparison by pointers
-	return (this == &other);
+    // comparison by pointers
+    return (this == &other);
 }
 
-} /* namespace samb */

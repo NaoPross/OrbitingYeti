@@ -15,16 +15,16 @@ namespace samb {
 
 class IteratorStatement: public Statement {
 public:
-	IteratorStatement(Type t, const std::string& condition, pointer next);
+    IteratorStatement(Type t, const std::string& condition, pointer next);
 
-	/* accessors */
-	const Scope& inner() const { return m_inner; }
+    /* accessors */
+    const Scope& inner() const { return m_inner; }
 
-	inline const std::string& condition() const { return text(); }
-	inline void condition(const std::string& condition) { return text(condition); }
+    inline const std::string& condition() const { return text(); }
+    inline void condition(const std::string& condition) { return text(condition); }
 
 private:
-	Scope m_inner;
+    Scope m_inner;
 };
 
 } /* namespace samb */
