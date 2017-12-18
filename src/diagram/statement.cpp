@@ -1,11 +1,4 @@
-/*
- * Statement.cpp
- *
- *  Created on: Nov 23, 2017
- *      Author: naopross
- */
-
-#include "Statement.hpp"
+#include "diagram/Statement.hpp"
 
 using namespace samb;
 

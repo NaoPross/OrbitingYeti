@@ -1,11 +1,4 @@
-/*
- * IteratorStatement.cpp
- *
- *  Created on: Nov 28, 2017
- *      Author: naopross
- */
-
-#include "IteratorStatement.hpp"
+#include "diagram/IteratorStatement.hpp"
 
 using namespace samb;
 

@@ -1,11 +1,4 @@
-/*
- * BranchStatement.cpp
- *
- *  Created on: Nov 28, 2017
- *      Author: naopross
- */
-
-#include "BranchStatement.hpp"
+#include "diagram/BranchStatement.hpp"
 
 using namespace samb;
 

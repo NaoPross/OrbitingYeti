@@ -1,9 +1,4 @@
-/*
- *  Created on: Nov 28, 2017
- *      Author: naopross
- */
-
-#include "Scope.hpp"
+#include "diagram/Scope.hpp"
 
 using namespace samb;
 
