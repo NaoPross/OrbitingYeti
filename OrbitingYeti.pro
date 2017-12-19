@@ -31,14 +31,21 @@ SOURCES += \
     src/diagram/iteratorstatement.cpp \
     src/diagram/scope.cpp \
     src/diagram/statement.cpp \
+    src/diagram/structogram.cpp \
+    src/ui/metadatadialog.cpp \
+    src/ui/painter.cpp
 
 HEADERS += \
     include/ui/mainwindow.h \
-    include/diagram/branchstatement.hpp \
-    include/diagram/iteratorstatement.hpp \
-    include/diagram/scope.hpp \
-    include/diagram/statement.hpp \
-    include/diagram/structogram.hpp
+    include/diagram/structogram.h \
+    include/diagram/statement.h \
+    include/diagram/scope.h \
+    include/diagram/iteratorstatement.h \
+    include/diagram/branchstatement.h \
+    include/ui/metadatadialog.h \
+    include/ui/painter.h
 
 FORMS += \
-        forms/mainwindow.ui
+    forms/mainwindow.ui \
+    forms/metadatadialog.ui \
+    forms/painter.ui

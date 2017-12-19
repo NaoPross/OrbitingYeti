@@ -1,29 +1,35 @@
-#include "diagram/Scope.hpp"
+#include "diagram/scope.h"
 
 using namespace samb;
 
 /* Scope::iterator */
 
-Scope::iterator::iterator(Statement::pointer statement): m_current(statement) {
+Scope::iterator::iterator(Statement::pointer statement) :
+    _current(statement)
+{
 
 }
 
-Scope::iterator::~iterator() {
+Scope::iterator::~iterator()
+{
 
 }
 
-Scope::iterator& Scope::iterator::operator++() {
-    if (m_current->next() == nullptr) {
+Scope::iterator& Scope::iterator::operator++()
+{
+    if (_current->next() == nullptr)
+    {
         // TODO: remove throw
         throw std::logic_error("Statement::iterator::operator++() m_current->next() is nullptr");
     }
 
-    m_current = m_current->next();
+    _current = _current->next();
 
     return *this;
 }
 
-Scope::iterator& Scope::iterator::operator++(int) {
+Scope::iterator& Scope::iterator::operator++(int)
+{
     static Scope::iterator old(*this);
 
     old = *this;
@@ -31,26 +37,35 @@ Scope::iterator& Scope::iterator::operator++(int) {
     return old;
 }
 
-Statement& Scope::iterator::operator*() const {
-    if (m_current == nullptr) {
+Statement& Scope::iterator::operator*() const
+{
+    if (_current == nullptr)
+    {
         throw std::logic_error("Statement::iterator::operator*() m_current is nullptr");
     }
 
-    return *m_current;
+    return *_current;
 }
 
-Statement::pointer Scope::iterator::operator->() const {
-    return m_current;
+Statement::pointer Scope::iterator::operator->() const
+{
+    return _current;
 }
 
 
 /* Scope */
 
-Scope::Scope(std::string label): Statement(Statement::Type::SCOPE, label, nullptr), m_head(nullptr), m_tail(nullptr) {
+Scope::Scope(const QString &label) :
+    Statement(Statement::Type::SCOPE, label, nullptr),
+    _head(nullptr), _tail(nullptr)
+{
 
 }
 
-Scope::Scope(std::string label, Statement::pointer first): Statement(Statement::Type::SCOPE, label, first), m_head(first), m_tail(first) {
+Scope::Scope(const QString &label, Statement::pointer first) :
+    Statement(Statement::Type::SCOPE, label, first),
+    _head(first), _tail(first)
+{
 
 }
 
@@ -58,21 +73,25 @@ Scope::~Scope() {
 
 }
 
-Scope::iterator Scope::insert_after(Scope::iterator it, Statement::pointer statement) {
-    if (statement == nullptr) {
+Scope::iterator Scope::insert_after(Scope::iterator it, Statement::pointer statement)
+{
+    if (statement == nullptr)
+    {
         throw std::invalid_argument("Statement::insert_after() cannot insert nullptr");
     }
 
     statement->next(it->next());
     it->next(statement);
 
-    m_size++;
+    _size++;
 
     return it;
 }
 
-Scope::iterator Scope::erase_after(Scope::iterator it) {
-    if (it->next() == nullptr) {
+Scope::iterator Scope::erase_after(Scope::iterator it)
+{
+    if (it->next() == nullptr)
+    {
         return end();
     }
 

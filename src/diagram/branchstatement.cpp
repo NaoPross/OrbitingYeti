@@ -1,8 +1,10 @@
-#include "diagram/BranchStatement.hpp"
+#include "diagram/branchstatement.h"
 
 using namespace samb;
 
-BranchStatement::BranchStatement(Type t, const std::string& condition, pointer next): Statement(t, condition, next) {
+BranchStatement::BranchStatement(Type t, const QString &condition, pointer next) :
+    Statement(t, condition, next)
+{
     switch (t) {
     case Statement::Type::DECISION:
     case Statement::Type::SWITCH:

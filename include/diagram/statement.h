@@ -1,15 +1,10 @@
-/*
- * Statement.h
- *
- *  Created on: Nov 23, 2017
- *      Author: naopross
- */
-
-#ifndef SRC_DIAGRAM_STATEMENT_H_
-#define SRC_DIAGRAM_STATEMENT_H_
+#ifndef DIAGRAM_STATEMENT_H
+#define DIAGRAM_STATEMENT_H
 
 #include <string>
 #include <memory>
+
+#include <QString>
 
 namespace samb {
 
@@ -28,7 +23,8 @@ namespace samb {
  * (linked list), that is also a common interface for the various types of
  * statements.
  */
-class Statement {
+class Statement
+{
 public:
     using pointer = std::shared_ptr<Statement>;
 
@@ -44,24 +40,24 @@ public:
 
     const Type type;
 
-    Statement(Type t, const std::string& text);
-    Statement(Type t, const std::string& text, pointer next);
+    Statement(Type t, const QString &text);
+    Statement(Type t, const QString &text, pointer next);
     virtual ~Statement();
 
     bool operator==(const Statement& other) const;
 
     /* accessors */
-    void next(pointer next) { m_next = next; }
-    pointer next() const { return m_next; }
+    void next(pointer next) { _next = next; }
+    pointer next() const { return _next; }
 
-    void text(const std::string& text) { m_text = text; }
-    const std::string& text() const { return m_text; }
+    void text(const QString &text) { _text = text; }
+    const QString& text() const { return _text; }
 
 private:
-    std::string m_text;
-    pointer m_next;
+    QString _text;
+    pointer _next;
 };
 
 } /* namespace samb */
 
-#endif /* SRC_DIAGRAM_STATEMENT_H_ */
+#endif /* DIAGRAM_STATEMENT_H */

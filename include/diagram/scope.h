@@ -1,12 +1,9 @@
-/*
- *  Created on: Nov 28, 2017
- *      Author: naopross
- */
+#ifndef DIAGRAM_SCOPE_H
+#define DIAGRAM_SCOPE_H
 
-#ifndef SRC_DIAGRAM_SCOPE_HPP_
-#define SRC_DIAGRAM_SCOPE_HPP_
+#include "diagram/statement.h"
 
-#include "Statement.hpp"
+#include <QString>
 
 namespace samb {
 
@@ -17,7 +14,8 @@ namespace samb {
  * BranchStatement or a IteratorStatement, to hold the statements within their
  * scope.
  */
-class Scope : public Statement {
+class Scope : public Statement
+{
 public:
     class iterator {
     public:
@@ -31,27 +29,27 @@ public:
         Statement::pointer operator->() const;
 
     private:
-        Statement::pointer m_current;
+        Statement::pointer _current;
     };
 
-    explicit Scope(std::string label);
-    Scope(std::string label, Statement::pointer first);
-    ~Scope();
+    explicit Scope(const QString &label);
+    Scope(const QString &label, Statement::pointer first);
+    virtual ~Scope();
 
     iterator insert_after(iterator it, Statement::pointer statement);
     iterator erase_after(iterator it);
 
     /* accessors */
-    std::size_t size() const { return m_size; }
+    std::size_t size() const { return _size; }
 
     /* iterator */
-    iterator begin() { return iterator(m_head); }
-    iterator end() { return iterator(m_tail); }
+    iterator begin() { return iterator(_head); }
+    iterator end() { return iterator(_tail); }
 
 private:
-    Statement::pointer m_head;
-    Statement::pointer m_tail;
-    std::size_t m_size = 0;
+    Statement::pointer _head;
+    Statement::pointer _tail;
+    std::size_t _size = 0;
 };
 
 } /* namespace samb */

@@ -1,9 +1,11 @@
-#include "diagram/IteratorStatement.hpp"
+#include "diagram/iteratorstatement.h"
 
 using namespace samb;
 
-IteratorStatement::IteratorStatement(Statement::Type t, const std::string& condition, Statement::pointer next)
-    : Statement(t, condition, next), m_inner("") {
+IteratorStatement::IteratorStatement(Statement::Type t, const QString &condition, Statement::pointer next) :
+    Statement(t, condition, next),
+    _inner("")
+{
 
     switch (t) {
     case Statement::Type::WHILE:
