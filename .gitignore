@@ -22,6 +22,11 @@ Release
 *.sublime-workspace
 *.sublime-project
 
+# QtCreator
+**/*.autosave
+*.pro.user
+.qmake.stash
+
 #######################################################################
 # BUILD SYSTEM
 #######################################################################
