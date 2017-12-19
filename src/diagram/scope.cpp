@@ -17,8 +17,7 @@ Scope::iterator::~iterator()
 
 Scope::iterator& Scope::iterator::operator++()
 {
-    if (_current->next() == nullptr)
-    {
+    if (_current->next() == nullptr) {
         // TODO: remove throw
         throw std::logic_error("Statement::iterator::operator++() m_current->next() is nullptr");
     }
@@ -40,9 +39,7 @@ Scope::iterator& Scope::iterator::operator++(int)
 Statement& Scope::iterator::operator*() const
 {
     if (_current == nullptr)
-    {
         throw std::logic_error("Statement::iterator::operator*() m_current is nullptr");
-    }
 
     return *_current;
 }
@@ -76,9 +73,7 @@ Scope::~Scope() {
 Scope::iterator Scope::insert_after(Scope::iterator it, Statement::pointer statement)
 {
     if (statement == nullptr)
-    {
         throw std::invalid_argument("Statement::insert_after() cannot insert nullptr");
-    }
 
     statement->next(it->next());
     it->next(statement);
@@ -91,9 +86,7 @@ Scope::iterator Scope::insert_after(Scope::iterator it, Statement::pointer state
 Scope::iterator Scope::erase_after(Scope::iterator it)
 {
     if (it->next() == nullptr)
-    {
         return end();
-    }
 
     it->next(it->next()->next());
 

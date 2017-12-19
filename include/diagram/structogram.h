@@ -7,15 +7,19 @@
 
 namespace samb {
 
+/* A structogram is a specific type of scope, that is the root scope.
+ * As a result it contains some metadata informations about the author,
+ * date of creation ecc.
+ */
 class Structogram : public Scope
 {
 public:
     Structogram(const QString &title, const QString &author);
-    ~Structogram();
+    virtual ~Structogram();
 
     /* accessors */
-    void title(const QString &title) { text(title); }
-    const QString& title() const { return text(); }
+    inline void title(const QString &title) { text(title); }
+    inline const QString& title() const { return text(); }
 
     void author(const QString &author) { _author = author; }
     const QString& author() const { return _author; }

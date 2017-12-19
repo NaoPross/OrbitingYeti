@@ -33,7 +33,8 @@ SOURCES += \
     src/diagram/statement.cpp \
     src/diagram/structogram.cpp \
     src/ui/metadatadialog.cpp \
-    src/ui/painter.cpp
+    src/ui/painter.cpp \
+    src/io/serializer.cpp
 
 HEADERS += \
     include/ui/mainwindow.h \
@@ -43,7 +44,9 @@ HEADERS += \
     include/diagram/iteratorstatement.h \
     include/diagram/branchstatement.h \
     include/ui/metadatadialog.h \
-    include/ui/painter.h
+    include/ui/painter.h \
+    include/debugtools.h \
+    include/io/serializer.h
 
 FORMS += \
     forms/mainwindow.ui \

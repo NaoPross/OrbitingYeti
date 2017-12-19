@@ -19,13 +19,19 @@ public:
 
 private slots:
     void on_newButton_clicked();
+    void on_openButton_clicked();
+    void on_saveButton_clicked();
+
+    void on_refreshButton_clicked();
     void on_metadataButton_clicked();
+    void on_newStatementButton_clicked();
 
 private:
     Ui::MainWindow *_ui;
     samb::Structogram *_structogram;
 
-    void initData();
+    bool askSaveDialog();
+    void toolButtonsEnabled(bool state);
 };
 
 #endif // MAINWINDOW_H

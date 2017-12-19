@@ -8,13 +8,15 @@
 
 namespace samb {
 
+/* Implementation for Statement::WHILE Statement::UNTIL
+ */
 class IteratorStatement : public Statement
 {
 public:
     IteratorStatement(Type t, const QString &condition, pointer next);
 
     /* accessors */
-    const Scope& inner() const { return _inner; }
+    Scope& inner() { return _inner; }
 
     inline const QString& condition() const { return text(); }
     inline void condition(const QString &condition) { return text(condition); }

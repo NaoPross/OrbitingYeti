@@ -11,19 +11,9 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Set metadata</string>
+   <string>Metadata</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="5" column="1">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="1">
     <widget class="QLabel" name="titleLabel">
      <property name="text">
@@ -43,6 +33,19 @@
    </item>
    <item row="4" column="1">
     <widget class="QLineEdit" name="authorEdit"/>
+   </item>
+   <item row="5" column="1">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
