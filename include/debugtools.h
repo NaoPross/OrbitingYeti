@@ -3,8 +3,8 @@
 
 #ifdef QT_NO_DEBUG
 
-void debug_msg(...) {}
-void debug_err(...) {}
+#define debug_msg(msg)
+#define debug_err(msg)
 
 #else
 #include <iostream>

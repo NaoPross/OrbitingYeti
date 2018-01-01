@@ -10,14 +10,14 @@ namespace samb {
 
 /* Implementation for Statement::DECISION, Statement::SWITCH
  */
-class BranchStatement : public Statement
+class Branch : public Statement
 {
 public:
-    BranchStatement(Type t, const QString &condition, pointer next);
+    Branch(Type t, const QString &condition, pointer next);
 
     /* accessors */
     std::map<QString, pointer>& branches() { return _branches; }
-    std::size_t branches_count() const { return _branchesCount; }
+    std::size_t branchesCount() const { return _branchesCount; }
 
     inline const QString& condition() const { return text(); }
     inline void condition(const QString &condition) { return text(condition); }

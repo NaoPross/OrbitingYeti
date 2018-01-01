@@ -1,4 +1,5 @@
 #include "diagram/scope.h"
+#include "debugtools.h"
 
 using namespace samb;
 
@@ -7,6 +8,9 @@ using namespace samb;
 Scope::iterator::iterator(Statement::pointer statement) :
     _current(statement)
 {
+    if (_current == nullptr) {
+        debug_err("invalid iterator interating nullptr");
+    }
 
 }
 
@@ -15,14 +19,23 @@ Scope::iterator::~iterator()
 
 }
 
+bool Scope::iterator::operator==(const iterator &other) const
+{
+    return *_current == *other;
+}
+
+bool Scope::iterator::operator!=(const iterator &other) const
+{
+    return !(*_current == *other);
+}
+
 Scope::iterator& Scope::iterator::operator++()
 {
-    if (_current->next() == nullptr) {
-        // TODO: remove throw
-        throw std::logic_error("Statement::iterator::operator++() m_current->next() is nullptr");
+    if (_current->next() != nullptr) {
+        _current = _current->next();
+    } else {
+        // throw std::logic_error("Statement::iterator::operator++() m_current->next() is nullptr");
     }
-
-    _current = _current->next();
 
     return *this;
 }
@@ -39,7 +52,7 @@ Scope::iterator& Scope::iterator::operator++(int)
 Statement& Scope::iterator::operator*() const
 {
     if (_current == nullptr)
-        throw std::logic_error("Statement::iterator::operator*() m_current is nullptr");
+        throw std::logic_error("Scope::iterator::operator*() m_current is nullptr");
 
     return *_current;
 }
@@ -56,7 +69,7 @@ Scope::Scope(const QString &label) :
     Statement(Statement::Type::SCOPE, label, nullptr),
     _head(nullptr), _tail(nullptr)
 {
-
+    _head = _tail = new Statement(Statement::PROCESS, "");
 }
 
 Scope::Scope(const QString &label, Statement::pointer first) :
@@ -91,4 +104,24 @@ Scope::iterator Scope::erase_after(Scope::iterator it)
     it->next(it->next()->next());
 
     return it;
+}
+
+Scope::iterator Scope::begin()
+{
+    return iterator(_head);
+}
+
+const Scope::iterator Scope::begin() const
+{
+    return begin();
+}
+
+Scope::iterator Scope::end()
+{
+    return iterator(_tail);
+}
+
+const Scope::iterator Scope::end() const
+{
+    return end();
 }

@@ -130,7 +130,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QWidget" name="widget" native="true">
+       <widget class="Painter" name="painter" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -149,7 +149,7 @@
      <x>0</x>
      <y>0</y>
      <width>824</width>
-     <height>28</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFIle">
@@ -335,6 +335,14 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Painter</class>
+   <extends>QWidget</extends>
+   <header>ui/painter.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

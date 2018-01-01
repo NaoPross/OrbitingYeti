@@ -10,10 +10,10 @@ namespace samb {
 
 /* Implementation for Statement::WHILE Statement::UNTIL
  */
-class IteratorStatement : public Statement
+class Iterator : public Statement
 {
 public:
-    IteratorStatement(Type t, const QString &condition, pointer next);
+    Iterator(Type t, const QString &condition, pointer next);
 
     /* accessors */
     Scope& inner() { return _inner; }

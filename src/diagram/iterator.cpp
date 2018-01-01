@@ -1,8 +1,8 @@
-#include "diagram/iteratorstatement.h"
+#include "diagram/iterator.h"
 
 using namespace samb;
 
-IteratorStatement::IteratorStatement(Statement::Type t, const QString &condition, Statement::pointer next) :
+Iterator::Iterator(Statement::Type t, const QString &condition, Statement::pointer next) :
     Statement(t, condition, next),
     _inner("")
 {

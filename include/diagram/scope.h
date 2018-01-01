@@ -22,6 +22,9 @@ public:
         explicit iterator(pointer statement);
         ~iterator();
 
+        bool operator==(const iterator &other) const;
+        bool operator!=(const iterator &other) const;
+
         iterator& operator++();
         iterator& operator++(int);
 
@@ -32,7 +35,7 @@ public:
         Statement::pointer _current;
     };
 
-    explicit Scope(const QString &label);
+    Scope(const QString &label);
     Scope(const QString &label, Statement::pointer first);
     virtual ~Scope();
 
@@ -43,8 +46,10 @@ public:
     std::size_t size() const { return _size; }
 
     /* iterator */
-    iterator begin() { return iterator(_head); }
-    iterator end() { return iterator(_tail); }
+    iterator begin();
+    const iterator begin() const;
+    iterator end();
+    const iterator end() const;
 
 private:
     Statement::pointer _head;

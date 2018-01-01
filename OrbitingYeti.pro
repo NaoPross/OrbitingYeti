@@ -27,28 +27,30 @@ INCLUDEPATH += include
 SOURCES += \
     src/main.cpp \
     src/ui/mainwindow.cpp \
-    src/diagram/branchstatement.cpp \
-    src/diagram/iteratorstatement.cpp \
     src/diagram/scope.cpp \
     src/diagram/statement.cpp \
     src/diagram/structogram.cpp \
     src/ui/metadatadialog.cpp \
     src/ui/painter.cpp \
-    src/io/serializer.cpp
+    src/io/serializer.cpp \
+    src/ui/statementdialog.cpp \
+    src/diagram/branch.cpp \
+    src/diagram/iterator.cpp
 
 HEADERS += \
     include/ui/mainwindow.h \
     include/diagram/structogram.h \
     include/diagram/statement.h \
     include/diagram/scope.h \
-    include/diagram/iteratorstatement.h \
-    include/diagram/branchstatement.h \
     include/ui/metadatadialog.h \
     include/ui/painter.h \
     include/debugtools.h \
-    include/io/serializer.h
+    include/io/serializer.h \
+    include/ui/statementdialog.h \
+    include/diagram/branch.h \
+    include/diagram/iterator.h
 
 FORMS += \
     forms/mainwindow.ui \
     forms/metadatadialog.ui \
-    forms/painter.ui
+    forms/statementdialog.ui

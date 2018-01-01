@@ -1,8 +1,11 @@
 #include "debugtools.h"
 
 #include "ui/metadatadialog.h"
+#include "ui/statementdialog.h"
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
+
+#include "diagram/statement.h"
 
 #include <iostream>
 
@@ -15,6 +18,7 @@ MainWindow::MainWindow(samb::Structogram *structogram, QWidget *parent) :
     _structogram(structogram)
 {
     _ui->setupUi(this);
+    _ui->painter->structogram(&_structogram);
 
     toolButtonsEnabled((_structogram != nullptr));
 }
@@ -53,7 +57,7 @@ void MainWindow::on_openButton_clicked()
             return;
 
     QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Load diagram"), "", "NS Diagram (*.nsdg);;All Files (*)");
+        tr("Load diagram"), "", tr("NS Diagram (*.nsdg);;All Files (*)"));
 
     if (fileName.isEmpty())
         return;
@@ -86,18 +90,24 @@ void MainWindow::on_metadataButton_clicked()
     if (_structogram == nullptr)
         return;
 
-    MetadataDialog *dialog = new MetadataDialog(this);
-    dialog->setMetadata(_structogram->title(), _structogram->author());
+    MetadataDialog dialog(this);
+    dialog.setMetadata(_structogram->title(), _structogram->author());
 
-    if (dialog->exec() == QDialog::Accepted) {
-        _structogram->title(dialog->title());
-        _structogram->author(dialog->author());
+    if (dialog.exec() == QDialog::Accepted) {
+        _structogram->title(dialog.title());
+        _structogram->author(dialog.author());
     }
 }
 
 void MainWindow::on_newStatementButton_clicked()
 {
+    if (_structogram == nullptr)
+        return;
 
+    StatementDialog dialog(this);
+    if (dialog.exec() == QDialog::Accepted) {
+
+    }
 }
 
 /**** private methods ****/

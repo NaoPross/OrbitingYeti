@@ -26,7 +26,8 @@ namespace samb {
 class Statement
 {
 public:
-    using pointer = std::shared_ptr<Statement>;
+//    using pointer = std::shared_ptr<Statement>;
+    using pointer = Statement*;
 
     enum Type {
         PROCESS,
@@ -39,6 +40,9 @@ public:
     };
 
     const Type type;
+
+    template<class... Args>
+    static pointer make(Type t, Args&& ...args);
 
     Statement(Type t, const QString &text);
     Statement(Type t, const QString &text, pointer next);

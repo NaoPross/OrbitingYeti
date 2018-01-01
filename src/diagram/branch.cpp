@@ -1,8 +1,8 @@
-#include "diagram/branchstatement.h"
+#include "diagram/branch.h"
 
 using namespace samb;
 
-BranchStatement::BranchStatement(Type t, const QString &condition, pointer next) :
+Branch::Branch(Type t, const QString &condition, pointer next) :
     Statement(t, condition, next)
 {
     switch (t) {

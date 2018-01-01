@@ -11,8 +11,8 @@ public:
     explicit Serializer();
     virtual ~Serializer();
 
-    bool write(const samb::Structogram &structogram, QFileInfo into);
-    bool load(samb::Structogram &structogram, QFileInfo from);
+    bool write(const samb::Structogram &structogram, const QFileInfo &into);
+    bool load(samb::Structogram &structogram, const QFileInfo &from);
 };
 
 #endif // SERIALIZER_H
