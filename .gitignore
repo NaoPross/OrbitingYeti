@@ -35,15 +35,3 @@ OrbitingYeti
 OrbitingYeti.exe
 
 build
-
-# cmake
-**/makefile
-**/Makefile
-**/CMakeFiles
-**/CmakeScripts
-**/CMakeCache.txt
-**/Testing
-**/install_manifest.txt
-**/cmake_install.cmake
-**/compile_commands.json
-**/CTestTestfile.cmake
